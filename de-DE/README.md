@@ -15,7 +15,8 @@ Die Antworten sind unterhalb der Fragen versteckt. Du kannst einfach darauf klic
 * [Español](../es-ES/README-ES.md)
 * [Français](../fr-FR/README_fr-FR.md)
 * [日本語](../ja-JA/README-ja_JA.md)  
-* [한국어](../ko-KR/README-ko_KR.md) 
+* [한국어](../ko-KR/README-ko_KR.md)
+* [Nederlands](./nl-NL/README.md)
 * [Português Brasil](../pt-BR/README_pt_BR.md)  
 * [Русский](../ru-RU/README.md)
 * [Українська мова](../ua-UA/README-ua_UA.md)  
@@ -874,9 +875,9 @@ console.log(a[b]);
 
 Objekt Keys werden automatisch in Strings umgewandelt. Wir versuchen ein Objekt mit dem Wert `123` als Key dem Objekt `a` zuzuweisen.
 
-Allerdings wird ein Object, wenn es in einen String umgewandelt wird als `"[Object object]"` ausgegeben. Was wir hier also sagen ist, dass `a["Object object"] = 123` ist. Wir versuchen das gleiche erneut - `c` ist ein anderes Objekt, welches wir implizit zu einem String umwandeln, sodass `a["Object object"] = 456` ist.
+Allerdings wird ein Object, wenn es in einen String umgewandelt wird als `"[object Object]"` ausgegeben. Was wir hier also sagen ist, dass `a["object Object"] = 123` ist. Wir versuchen das gleiche erneut - `c` ist ein anderes Objekt, welches wir implizit zu einem String umwandeln, sodass `a["object Object"] = 456` ist.
 
-Dann loggen wir `a[b]`, was eigentlich `a["Object object"]` ist und gerade von uns zu `456` gesetzt wurde, sodass `456` ausgegeben wird.
+Dann loggen wir `a[b]`, was eigentlich `a["object Object"]` ist und gerade von uns zu `456` gesetzt wurde, sodass `456` ausgegeben wird.
 
 </p>
 </details>
@@ -1046,7 +1047,7 @@ typeof sayHi();
 
 Die `sayHi` Funktion gibt den Wert der sofort ausgeführten Funktion (IIFE) zurück. Die Funktion gibt `0` zurück, was vom Typ `"number"` ist.
 
-Es gibt nur 7 eingebaute Typen in JavaScript: `null`, `undefined`, `boolean`, `number`, `string`, `object`, und `symbol`. `"function"` ist kein Typ, weil Funktionen Objekte sind und daher dem Typ `"object"` entsprechen.
+Es gibt nur 7 eingebaute Typen in JavaScript: `null`, `undefined`, `boolean`, `number`, `string`, `object`, `symbol`, und `bigint`. `"function"` ist kein Typ, weil Funktionen Objekte sind und daher dem Typ `"object"` entsprechen.
 
 </p>
 </details>
@@ -3287,8 +3288,8 @@ for (let item of set) {
 
 - A: `3`, `NaN`, `NaN`
 - B: `3`, `7`, `NaN`
-- C: `3`, `Lydia2`, `[Object object]2`
-- D: `"12"`, `Lydia2`, `[Object object]2`
+- C: `3`, `Lydia2`, `[object Object]2`
+- D: `"12"`, `Lydia2`, `[object Object]2`
 
 <details><summary><b>Antwort</b></summary>
 <p>
@@ -3301,7 +3302,7 @@ Der erste Wert ist `1`, was ein numerischer Wert ist. `1 + 2` ergibt die Zahl `3
 
 Der zweite Wert hingegen ist der String `"Lydia"`. `"Lydia"` ist ein String und `2` ist eine Nummer: `2` wird in einem String umgewandelt. `"Lydia"` und `"2"` werden zusammengesetzt, was den String `"Lydia2"` ausgibt. 
 
-`{ name: "Lydia" }` ist ein Objekt. Weder eine Nummer, noch ein Objekt sind ein String, aber beide werden zu Strings konvertiert und `"[Object object]"` wird ausgegeben. `"[Object object]"` zusammengesetzt mit `"2"` wird `"[Object object]2"`.
+`{ name: "Lydia" }` ist ein Objekt. Weder eine Nummer, noch ein Objekt sind ein String, aber beide werden zu Strings konvertiert und `"[object Object]"` wird ausgegeben. `"[object Object]"` zusammengesetzt mit `"2"` wird `"[object Object]2"`.
 
 </p>
 </details>
@@ -3748,6 +3749,276 @@ Beide Funktionen, `changeAge` und `changeAgeAndName`, haben Standard Parameter, 
 Zuerst führen wir die `changeAge` Funktion aus und übergeben ihr das `person` Objekt als Argument. Daher wird `age` um 1 erhöht. `person` ist jetzt `{ name: "Lydia", age: 22 }`.
 
 Dann führen wir `changeAgeAndName` aus, allerdings ohne Parameter. Stattdessen ist der Wert von `x` gleich dem neuen Objekt `{ ...person }`. Da dies ein neues Objekt ist hat es keinen Einfluss auf die Werte des `person` Objekts. `person` ist immernoch gleich `{ name: "Lydia", age: 22 }`.
+
+</p>
+</details>
+
+---
+
+###### <a name=20191118></a>117. Welche der beiden Optionen wird `6` ausgeben?
+
+```javascript
+function sumValues(x, y, z) {
+	return x + y + z;
+}
+```
+
+- A: `sumValues([...1, 2, 3])`
+- B: `sumValues([...[1, 2, 3]])`
+- C: `sumValues(...[1, 2, 3])`
+- D: `sumValues([1, 2, 3])`
+
+<details><summary><b>Antwort</b></summary>
+<p>
+
+#### Antwort: C
+
+Mit dem Spread-Operator `...` können wir Werte _spreaden_ ("verstreichen"). Die `sumValues` Funktion erhält drei Argumente: `x`, `y` und `z`. `...[1, 2, 3]` ergibt `1, 2, 3`, was wir an `sumValues` übergeben.
+
+</p>
+</details>
+
+---
+
+###### 118. Was ist der Output??
+
+```javascript
+let num = 1;
+const list = ["🥳", "🤠", "🥰", "🤪"];
+
+console.log(list[(num += 1)]);
+```
+
+- A: `🤠`
+- B: `🥰`
+- C: `SyntaxError`
+- D: `ReferenceError`
+
+<details><summary><b>Antwort</b></summary>
+<p>
+
+#### Antwort: B
+
+Mit dem`+=` Operanden erhöhen wir den Wert von `num` um `1`. `num` hatte den ursprünglichen Wert `1` und `1 + 1` ergibt `2`. Der Wert an zweiter Stelle im `list` Array ist 🥰. `console.log(list[2])` gibt 🥰 aus.
+
+</p>
+</details>
+
+---
+
+###### 119. Was ist der Output??
+
+```javascript
+const person = {
+	firstName: "Lydia",
+	lastName: "Hallie",
+	pet: {
+		name: "Mara",
+		breed: "Dutch Tulip Hound"
+	},
+	getFullName() {
+		return `${this.firstName} ${this.lastName}`;
+	}
+};
+
+console.log(person.pet?.name);
+console.log(person.pet?.family?.name);
+console.log(person.getFullName?.());
+console.log(member.getLastName?.());
+```
+
+- A: `undefined` `undefined` `undefined` `undefined`
+- B: `Mara` `undefined` `Lydia Hallie` `undefined`
+- C: `Mara` `null` `Lydia Hallie` `null`
+- D: `null` `ReferenceError` `null` `ReferenceError`
+
+<details><summary><b>Antwort</b></summary>
+<p>
+
+#### Antwort: B
+
+Mit den optionalen Kettenoperator `?.` müssen wir nicht mehr prüfen, ob die tiefer genesteten Werte gültig sind oder nicht. Wenn wir die Property von `undefined` oder `null` aufrufen (_nullish_) gibt die Expression direkt `undefined` aus.
+
+`person.pet?.name`: `person` hat eine Property `pet`: `person.pet` ist nicht nullish. Diese hat eine Property `name` und gibt `Mara` aus.
+`person.pet?.family?.name`: `person` hat eine Property `pet`: `person.pet` ist nicht nullish. `pet` hat _keine_ Property `family`, `person.pet.family` ist nullish. Die Expression gibt `undefined` aus.
+`person.getFullName?.()`: `person` hat eine Property `getFullName`: `person.getFullName()` ist nicht nullish und wird ausgeführt: `Lydia Hallie` wird ausgegeben.
+`member.getLastName?.()`: `member` ist undefined: `member.getLastName()` ist nullish. Die Expression gibt `undefined` aus.
+
+</p>
+</details>
+
+---
+
+###### 120. Was ist der Output??
+
+```javascript
+const groceries = ["banana", "apple", "peanuts"];
+
+if (groceries.indexOf("banana")) {
+	console.log("We have to buy bananas!");
+} else {
+	console.log(`We don't have to buy bananas!`);
+}
+```
+
+- A: We have to buy bananas!
+- B: We don't have to buy bananas
+- C: `undefined`
+- D: `1`
+
+<details><summary><b>Antwort</b></summary>
+<p>
+
+#### Antwort: B
+
+Wir haben die Kondition `groceries.indexOf("banana")` an das if-Statement übergeben. `groceries.indexOf("banana")` gibt `0` aus, was ein _falsy_ Wert ist. Da die Kondition nicht erfüllt ist wird der `else` Block ausgeführt und `We don't have to buy bananas!` wird geloggt.
+
+</p>
+</details>
+
+---
+
+###### 121. Was ist der Output?
+
+```javascript
+const config = {
+	languages: [],
+	set language(lang) {
+		return this.languages.push(lang);
+	}
+};
+
+console.log(config.language);
+```
+
+- A: `function language(lang) { this.languages.push(lang) }`
+- B: `0`
+- C: `[]`
+- D: `undefined`
+
+<details><summary><b>Antwort</b></summary>
+<p>
+
+#### Antwort: D
+
+Die Methode `language` ist ein `setter`. Setter halten keinen Wert, sondern ändern Properties. Wenn eine `setter` Methode aufgerufen wird, wird `undefined` zurückgegeben.
+
+</p>
+</details>
+
+---
+
+###### 122. Was ist der Output??
+
+```javascript
+const name = "Lydia Hallie";
+
+console.log(!typeof name === "object");
+console.log(!typeof name === "string");
+```
+
+- A: `false` `true`
+- B: `true` `false`
+- C: `false` `false`
+- D: `true` `true`
+
+<details><summary><b>Antwort</b></summary>
+<p>
+
+#### Antwort: C
+
+`typeof name` gibt `"string"` aus. Der String `"string"` ist _truthy_, sodass `!typeof name` den Boolean-Wert `false` ergibt. `false === "object"` und `false === "string"` geben beide `false` aus.
+
+(Würden wir prüfen wollen, oob der Typ (un)gleich zu einem bestimmten anderen Typen ist hätten wir `!==` anstelle von `!typeof` schreiben müssen)
+
+</p>
+</details>
+
+---
+
+###### 123. Was ist der Output??
+
+```javascript
+const add = x => y => z => {
+	console.log(x, y, z);
+	return x + y + z;
+};
+
+add(4)(5)(6);
+```
+
+- A: `4` `5` `6`
+- B: `6` `5` `4`
+- C: `4` `function` `function`
+- D: `undefined` `undefined` `6`
+
+<details><summary><b>Antwort</b></summary>
+<p>
+
+#### Antwort: A
+
+Die `add` Funktion gibt eine Arrow Funktion zurück, welche eine Arrow Funktion zurückgibt, welche eine Arrow Funktion zurückgibt. Die erste Funktion erhält ein Argument `x` mit dem Wert `4`. Wir führen die zweite Funktion aus, welche ein Argument `y` mit dem Wert `5` erhält. Dann führen wir die dritte Funktion aus, die ein Argument `z` mit dem Wert `6` erhält. Wenn wir versuchen die Werte von `x`, `y` und `z` der jeweils letzten Arrow Funktion aufzurufen geht die JavaScript Engine in der Scope-Kette nach oben um die jeweiligen Werte zu finden. Das gibt `4` `5` `6` aus.
+
+</p>
+</details>
+
+---
+
+###### 124. Was ist der Output??
+
+```javascript
+async function* range(start, end) {
+	for (let i = start; i <= end; i++) {
+		yield Promise.resolve(i);
+	}
+}
+
+(async () => {
+	const gen = range(1, 3);
+	for await (const item of gen) {
+		console.log(item);
+	}
+})();
+```
+
+- A: `Promise {1}` `Promise {2}` `Promise {3}`
+- B: `Promise {<pending>}` `Promise {<pending>}` `Promise {<pending>}`
+- C: `1` `2` `3`
+- D: `undefined` `undefined` `undefined`
+
+<details><summary><b>Antwort</b></summary>
+<p>
+
+#### Antwort: C
+
+Die Generator-Funktion `range` gibt ein asynchrones Objekt mit Promisen für jeden Wert zurück: `Promise{1}`, `Promise{2}`, `Promise{3}`. Wir setzen die Variable `gen` gleich dem asynchronen Objekt. Danach loopen wir mit einer `for await ... of` Schleife darüber. Wir setzen die Variable `item` gleich dem ausgegebenen Promise: zuerst `Promise{1}`, dann `Promise{2}`, und dann `Promise{3}`. Da wir das Ergebnis von `item` _await_-en (erwarten), werden die gelösten Ergebnisse der Promises ausgegeben: `1`, `2` und `3`.
+
+</p>
+</details>
+
+---
+
+###### 125. Was ist der Output??
+
+```javascript
+const myFunc = ({ x, y, z }) => {
+	console.log(x, y, z);
+};
+
+myFunc(1, 2, 3);
+```
+
+- A: `1` `2` `3`
+- B: `{1: 1}` `{2: 2}` `{3: 3}`
+- C: `{ 1: undefined }` `undefined` `undefined`
+- D: `undefined` `undefined` `undefined`
+
+<details><summary><b>Antwort</b></summary>
+<p>
+
+#### Antwort: D
+
+`myFunc` erwartet ein Objekt mit den Properties `x`, `y` und `z` als Argumente. Da wir nur drei separate Werte anstelle eines Objektes mit den Properties `x`, `y` und `z` ({x: 1, y: 2, z: 3}) eingeben, bekommen `x`, `y` und `z` den Standardwert `undefined` zugewiesen.
 
 </p>
 </details>

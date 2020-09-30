@@ -22,7 +22,8 @@
 * [Español](../es-ES/README-ES.md)
 * [Français](../fr-FR/README_fr-FR.md)
 * [日本語](../ja-JA/README-ja_JA.md)  
-* [한국어](../ko-KR/README-ko_KR.md) 
+* [한국어](../ko-KR/README-ko_KR.md)
+* [Nederlands](./nl-NL/README.md)
 * [Português Brasil](../pt-BR/README_pt_BR.md)  
 * [Русский](../ru-RU/README.md)
 * [Українська мова](../ua-UA/README-ua_UA.md)  
@@ -910,10 +911,10 @@ console.log(a[b]);
 
 مفاتيح ال object يتم تحويلها اوتوماتيكيا الى strings. نحن نحاول أن نقوم بجعل  object عبارة عن مفتاح للobject `a`, و الذي يحمل القيمة `123`.  
 
-و لكن, عندما نقوم بمحاول جعل object الى نوع string, سيصبح `"[Object object]"`. لذا ما نحاول أن نقوله هنا, هو أن `a["Object object"] = 123`.
-إذا, سنحاول أن نفعل هذا مرة أخرى , `c` هو object آخر سنقوم بتحويله الى string بصورة صريحة, لذا `a["Object object"] = 456`.  
+و لكن, عندما نقوم بمحاول جعل object الى نوع string, سيصبح `"[object Object]"`. لذا ما نحاول أن نقوله هنا, هو أن `a["object Object"] = 123`.
+إذا, سنحاول أن نفعل هذا مرة أخرى , `c` هو object آخر سنقوم بتحويله الى string بصورة صريحة, لذا `a["object Object"] = 456`.  
 
-إذاَ, نحن نقوم بعمل log ل `a[b]`, و التي هي في الحقيقة `a["Object object"]`. و نحن قبل قليل قمنا بوضع قيمتها التي تساوي `456`, لذا ستقوم بإرجاع `456`.    
+إذاَ, نحن نقوم بعمل log ل `a[b]`, و التي هي في الحقيقة `a["object Object"]`. و نحن قبل قليل قمنا بوضع قيمتها التي تساوي `456`, لذا ستقوم بإرجاع `456`.    
 </p>
 </details>
 </div>
@@ -1087,7 +1088,7 @@ console.log(typeof sayHi());
 
 دالة `sayHi` تقوم بإرجاع القيمة المرجعة من الدالة المناداة في اللحظة (IIFE). هذه الدالة تقوم بإرجاع `0`, و الذي نوعه عبارة عن `"number"`.   
 
-لمعلوماتك: لدينا فقط سبعة أنواع من ال built-in و هي : `null`, `undefined`, `boolean`, `number`, `string`, `object`, و `symbol`.`"function"` هي ليست نوع, وبما أن الدوال عبارة عن objects, ف هي ليست من النوع `"object"`.  
+لمعلوماتك: لدينا فقط سبعة أنواع من ال built-in و هي : `null`, `undefined`, `boolean`, `number`, `string`, `object`, و `symbol`, و `bigint`.`"function"` هي ليست نوع, وبما أن الدوال عبارة عن objects, ف هي ليست من النوع `"object"`.  
 </p>
 </details>
 </div>

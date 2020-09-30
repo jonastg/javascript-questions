@@ -16,7 +16,8 @@
 * [Español](../es-ES/README-ES.md)
 * [Français](../fr-FR/README_fr-FR.md)
 * [日本語](../ja-JA/README-ja_JA.md)  
-* [한국어](../ko-KR/README-ko_KR.md) 
+* [한국어](../ko-KR/README-ko_KR.md)
+* [Nederlands](./nl-NL/README.md)
 * [Português Brasil](../pt-BR/README_pt_BR.md)  
 * [Русский](../ru-RU/README.md)
 * [Українська мова](../ua-UA/README-ua_UA.md)  
@@ -902,11 +903,11 @@ console.log(a[b]);
 
 オブジェクトキーは自動的に文字列に変換されます。オブジェクトaのキーとして、値123で設定しようとしています。
 
-しかし、オブジェクトを文字列化すると、それは`"[Object object]"`​​になってしまいます。なので、ここで行っているのは、 `a["Object object"] = 123`です。
+しかし、オブジェクトを文字列化すると、それは`"[object Object]"`​​になってしまいます。なので、ここで行っているのは、 `a["object Object"] = 123`です。
 
-その後、同じことをもう一度試みています。`c`は暗黙のうちに文字列化している別のオブジェクトです。そのため、`a["Object object"] = 456`となります。
+その後、同じことをもう一度試みています。`c`は暗黙のうちに文字列化している別のオブジェクトです。そのため、`a["object Object"] = 456`となります。
 
-その後、`a[b]`でログ出力。実際には`a["Object object"]`です。これを `456`に設定しただけなので、`456`を返します。
+その後、`a[b]`でログ出力。実際には`a["object Object"]`です。これを `456`に設定しただけなので、`456`を返します。
 
 </p>
 </details>
@@ -1079,7 +1080,7 @@ typeof sayHi();
 
 `sayHi`関数は、即時呼び出し関数式（IIFE）の戻り値を返します。この関数は`0`を返しました。それは`"number"`型です。
 
-参考：7つの組み込み型しかありません： `null`, `undefined`, `boolean`, `number`, `string`, `object`, そして`symbol`。関数はオブジェクトなので、`"function"`型ではなく`"object"`型です。
+参考：7つの組み込み型しかありません： `null`, `undefined`, `boolean`, `number`, `string`, `object`, `symbol`, そして `bigint`。関数はオブジェクトなので、`"function"`型ではなく`"object"`型です。
 
 </p>
 </details>
